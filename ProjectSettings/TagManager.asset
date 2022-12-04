@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ColisionSegura
   - ColisionPeligrosa
+  - Aterrizaje
   layers:
   - Default
   - TransparentFX

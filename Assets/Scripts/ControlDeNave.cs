@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControlDeNave : MonoBehaviour
 {
@@ -29,8 +30,16 @@ public class ControlDeNave : MonoBehaviour
             case "ColisionSegura":
                 print("Colision Segura ...");
                 break;
-            case "ColisionPeligrosa":
-                print("Colision Peligrosa ...");
+            case "Combustible":
+                print("Combustible...");
+                break;
+            case "Aterrizaje":
+                //print("Aterrizaje...");
+                SceneManager.LoadScene("Nivel2");
+                break;
+            default:
+                //print("Muerto!!!...");
+                SceneManager.LoadScene("Nivel1");
                 break;
         }
         /*if (collision.gameObject.CompareTag("ColisionSegura"))
