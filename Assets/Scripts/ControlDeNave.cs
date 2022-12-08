@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ControlDeNave : MonoBehaviour
 {
@@ -9,12 +10,18 @@ public class ControlDeNave : MonoBehaviour
     Transform transform;
     AudioSource audiosource;
 
+
+    public Text puntajeText;
+    float puntaje;
+
     public GameObject[] lifes;
     int life;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        puntaje = 100000;
         life = lifes.Length;
         Debug.Log("initial : " + life);
         rigidbody = GetComponent<Rigidbody>();
@@ -28,7 +35,8 @@ public class ControlDeNave : MonoBehaviour
         //Debug.Log(Time.deltaTime + "seg. " + (1.0f / Time.deltaTime) + " FPS");
         ProcesarInput();
 
-        
+        puntaje -= Time.deltaTime;
+        puntajeText.text = "Puntaje: " + puntaje.ToString("f0");
             
     }
 
@@ -48,16 +56,19 @@ public class ControlDeNave : MonoBehaviour
                 break;
             default:
                 //print("Muerto!!!...");
+
+
+                puntaje -= (puntaje * 0.05f); 
                 life--;
-                if (life < 0)
+                if (life < 1)
                 {
-                    Debug.Log("Die : " + life);
+                    //Debug.Log("Die : " + life);
                     Destroy(lifes[0].gameObject);
                     SceneManager.LoadScene("Nivel1");
                 }
                 else if (life < 5)
                 {
-                    Debug.Log("colission : " + life);
+                    //Debug.Log("colission : " + life);
                     Destroy(lifes[life].gameObject);
                 }
                 //SceneManager.LoadScene("Nivel1");

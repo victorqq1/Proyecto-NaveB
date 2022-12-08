@@ -7,6 +7,8 @@ TagManager:
   - ColisionSegura
   - ColisionPeligrosa
   - Aterrizaje
+  - Nave
+  - Combustible
   layers:
   - Default
   - TransparentFX
