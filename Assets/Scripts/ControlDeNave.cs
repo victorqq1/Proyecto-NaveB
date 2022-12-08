@@ -16,6 +16,7 @@ public class ControlDeNave : MonoBehaviour
     void Start()
     {
         life = lifes.Length;
+        Debug.Log("initial : " + life);
         rigidbody = GetComponent<Rigidbody>();
         transform = GetComponent<Transform>();
         audiosource = GetComponent<AudioSource>();
@@ -26,15 +27,9 @@ public class ControlDeNave : MonoBehaviour
     {
         //Debug.Log(Time.deltaTime + "seg. " + (1.0f / Time.deltaTime) + " FPS");
         ProcesarInput();
+
         
-        if (life < 1) {
-            Destroy(lifes[0].gameObject);
-            SceneManager.LoadScene("Nivel1");
-        } else if (life < 2) {
-            Destroy(lifes[1].gameObject);
-        } else if (life < 3) {
-            Destroy(lifes[2].gameObject);
-        }
+            
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -54,6 +49,17 @@ public class ControlDeNave : MonoBehaviour
             default:
                 //print("Muerto!!!...");
                 life--;
+                if (life < 0)
+                {
+                    Debug.Log("Die : " + life);
+                    Destroy(lifes[0].gameObject);
+                    SceneManager.LoadScene("Nivel1");
+                }
+                else if (life < 5)
+                {
+                    Debug.Log("colission : " + life);
+                    Destroy(lifes[life].gameObject);
+                }
                 //SceneManager.LoadScene("Nivel1");
                 break;
         }
