@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
 
     public Transform target;
 
-    public Vector3 offset = new Vector3(-3, 0, -15f);
+    public Vector3 offset = new Vector3(-3, -1, -15f);
 
     public float dampingTime = 0.3f;
 
@@ -41,7 +41,7 @@ public class CameraFollow : MonoBehaviour
     {
         Vector3 destination = new Vector3(
             target.position.x - offset.x,
-            offset.y,
+            target.position.y - offset.y,
             offset.z);
 
         if (smooth)
