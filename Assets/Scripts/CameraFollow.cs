@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
 
     public Transform target;
 
-    public Vector3 offset = new Vector3(-3, -1, -15f);
+    public Vector3 offset = new Vector3(-5, -5, -20f);
 
     public float dampingTime = 0.3f;
 
@@ -39,11 +39,19 @@ public class CameraFollow : MonoBehaviour
 
     void MoveCamera(bool smooth)
     {
+       
         Vector3 destination = new Vector3(
             target.position.x - offset.x,
             target.position.y - offset.y,
             offset.z);
+        
+        /*
+        Vector3 destination = new Vector3(
+            target.position.x - offset.x,
+            offset.y,
+            offset.z);
 
+        */
         if (smooth)
         {
             this.transform.position = Vector3.SmoothDamp(
