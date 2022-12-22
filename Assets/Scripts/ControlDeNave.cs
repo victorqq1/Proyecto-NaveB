@@ -64,7 +64,7 @@ public class ControlDeNave : MonoBehaviour
 
                 puntaje -= (puntaje * 0.05f); 
                 life--;
-                if (life < 1)
+                if (life < 1 || fuelBar.currentFuel < 1)
                 {
                     //Debug.Log("Die : " + life);
                     Destroy(lifes[0].gameObject);
@@ -94,7 +94,7 @@ public class ControlDeNave : MonoBehaviour
         Rotacion();
     }
 
-    float consumeFuel = 0.1f;
+    float consumeFuel = 0.25f;
     private void Propulsion()
     {
         if (Input.GetKey(KeyCode.Space))
