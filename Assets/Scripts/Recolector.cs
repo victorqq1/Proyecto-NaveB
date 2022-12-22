@@ -32,17 +32,13 @@ public class Recolector : MonoBehaviour
         }
     }
     
-
     /*
-    void OnTriggerEnter(Collider collider)
+    private void OnTriggerEnter(Collider other)
     {
-        
-        if (collider.gameObject.tag == "Player")
+        if(other.gameObject.CompareTag("Player"))
         {
-            print("Fuel picked up!");
             Destroy(gameObject);
         }
     }
     */
-
 }
