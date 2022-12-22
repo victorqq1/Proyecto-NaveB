@@ -9,6 +9,7 @@ public class ControlDeNave : MonoBehaviour
     Rigidbody rigidbody;
     Transform transform;
     AudioSource audiosource;
+    string NextLevel = "Nivel2";
 
     public FuelBar fuelBar;
 
@@ -48,15 +49,16 @@ public class ControlDeNave : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "ColisionSegura":
-                print("Colision Segura ...");
+                //print("Colision Segura ...");
                 break;
             case "Combustible":
                 fuelBar.currentFuel += fillFuel;
-                print("Combustible...");
+                //print("Combustible...");
                 break;
             case "Aterrizaje":
                 //print("Aterrizaje...");
-                SceneManager.LoadScene("Nivel2");
+                CambiarNivel();
+                SceneManager.LoadScene(NextLevel);
                 break;
             default:
                 //print("Muerto!!!...");
@@ -137,5 +139,37 @@ public class ControlDeNave : MonoBehaviour
             rotarIzquierda.z += Time.deltaTime * 1;
             transform.rotation = rotarIzquierda;
         }
+    }
+
+    void CambiarNivel()
+    {
+        string levelName = Application.loadedLevelName;
+        if (levelName == "Nivel1")
+        {
+            NextLevel = "Nivel2";
+            //print(NextLevel);
+        }
+        else if (levelName == "Nivel2")
+        {
+            NextLevel = "Nivel3";
+            //print(NextLevel);
+        }
+        else if (levelName == "Nivel3")
+        {
+            NextLevel = "Nivel4";
+            //print(NextLevel);
+        }            
+        else if (levelName == "Nivel4")
+        {
+            NextLevel = "Nivel5";
+            //print(NextLevel);
+        }            
+        else if (levelName == "Nivel5")
+        {
+            NextLevel = "Nivel5";
+            //print(NextLevel);
+        }
+
+        print(NextLevel);
     }
 }
