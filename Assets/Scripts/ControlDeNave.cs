@@ -97,7 +97,7 @@ public class ControlDeNave : MonoBehaviour
     float consumeFuel = 0.25f;
     private void Propulsion()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && fuelBar.currentFuel > 0)
         {
             rigidbody.freezeRotation = true;
             //print("Propulsor...");
