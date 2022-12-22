@@ -10,6 +10,8 @@ public class ControlDeNave : MonoBehaviour
     Transform transform;
     AudioSource audiosource;
 
+    public FuelBar fuelBar;
+
 
     public Text puntajeText;
     float puntaje;
@@ -40,6 +42,7 @@ public class ControlDeNave : MonoBehaviour
             
     }
 
+    float fillFuel = 10.0f;
     private void OnCollisionEnter(Collision collision)
     {
         switch (collision.gameObject.tag)
@@ -48,6 +51,7 @@ public class ControlDeNave : MonoBehaviour
                 print("Colision Segura ...");
                 break;
             case "Combustible":
+                fuelBar.currentFuel += fillFuel;
                 print("Combustible...");
                 break;
             case "Aterrizaje":
@@ -90,6 +94,7 @@ public class ControlDeNave : MonoBehaviour
         Rotacion();
     }
 
+    float consumeFuel = 0.1f;
     private void Propulsion()
     {
         if (Input.GetKey(KeyCode.Space))
@@ -97,10 +102,14 @@ public class ControlDeNave : MonoBehaviour
             rigidbody.freezeRotation = true;
             //print("Propulsor...");
             rigidbody.AddRelativeForce(Vector3.up); // x=0 y=1 z=0
+
+
             if (!audiosource.isPlaying)
             {
                 audiosource.Play();
             }
+
+            fuelBar.currentFuel -= consumeFuel;
         }
         else
         {
