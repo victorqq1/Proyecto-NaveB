@@ -11,7 +11,6 @@ public enum tipoRecolectable
 public class Recolector : MonoBehaviour
 {
     public tipoRecolectable tipo = tipoRecolectable.combustible;
-
     // Start is called before the first frame update
     void Start()
     {
