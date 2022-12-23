@@ -70,7 +70,7 @@ public class ControlDeNave : MonoBehaviour
                 {
                     //Debug.Log("Die : " + life);
                     Destroy(lifes[0].gameObject);
-                    SceneManager.LoadScene("Nivel1");
+                    SceneManager.LoadScene(Application.loadedLevelName);
                 }
                 else if (life < 5)
                 {
@@ -180,7 +180,7 @@ public class ControlDeNave : MonoBehaviour
         }            
         else if (levelName == "Nivel5")
         {
-            NextLevel = "Nivel5";
+            NextLevel = "Nivel1";
             //print(NextLevel);
         }
 
