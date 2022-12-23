@@ -167,7 +167,7 @@ public class ControlDeNave : MonoBehaviour
         }            
         else if (levelName == "Nivel5")
         {
-            NextLevel = "Nivel5";
+            NextLevel = "Nivel1";
             //print(NextLevel);
         }
 
