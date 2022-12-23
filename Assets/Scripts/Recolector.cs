@@ -11,10 +11,11 @@ public enum tipoRecolectable
 public class Recolector : MonoBehaviour
 {
     public tipoRecolectable tipo = tipoRecolectable.combustible;
+    AudioSource audiosource;
     // Start is called before the first frame update
     void Start()
     {
-
+        audiosource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -26,6 +27,10 @@ public class Recolector : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
+        if (!audiosource.isPlaying)
+        {
+            audiosource.Play();
+        }
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
@@ -35,9 +40,10 @@ public class Recolector : MonoBehaviour
     /*
     private void OnTriggerEnter(Collider other)
     {
+        print("Colision");
         if(other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
     }
     */
