@@ -13,7 +13,6 @@ public class ControlDeNave : MonoBehaviour
 
     public FuelBar fuelBar;
 
-
     public Text puntajeText;
     float puntaje;
 
@@ -80,6 +79,8 @@ public class ControlDeNave : MonoBehaviour
                 //SceneManager.LoadScene("Nivel1");
                 break;
         }
+
+
         /*if (collision.gameObject.CompareTag("ColisionSegura"))
         {
             print("Colision Segura");
