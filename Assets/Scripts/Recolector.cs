@@ -24,7 +24,7 @@ public class Recolector : MonoBehaviour
     
     }
 
-    
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if (!audiosource.isPlaying)
@@ -36,6 +36,7 @@ public class Recolector : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    *
     
     /*
     private void OnTriggerEnter(Collider other)

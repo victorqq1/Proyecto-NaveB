@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -50,10 +51,10 @@ public class ControlDeNave : MonoBehaviour
             case "ColisionSegura":
                 //print("Colision Segura ...");
                 break;
-            case "Combustible":
-                fuelBar.currentFuel += fillFuel;
+            //case "Combustible":
+              //  fuelBar.currentFuel += fillFuel;
                 //print("Combustible...");
-                break;
+                //break;
             case "Aterrizaje":
                 //print("Aterrizaje...");
                 CambiarNivel();
@@ -80,6 +81,8 @@ public class ControlDeNave : MonoBehaviour
                 break;
         }
 
+        
+
 
         /*if (collision.gameObject.CompareTag("ColisionSegura"))
         {
@@ -89,6 +92,16 @@ public class ControlDeNave : MonoBehaviour
         {
             print("Colision Peligrosa...");
         }*/
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //print("Triger");
+        if (other.gameObject.CompareTag("Combustible"))
+        {
+            fuelBar.currentFuel += fillFuel;
+            Destroy(other.gameObject);
+        }
     }
 
     private void ProcesarInput()
